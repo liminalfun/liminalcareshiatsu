@@ -1,18 +1,22 @@
 // Colors ----------------------------------------------------------------------
+// Set your color palette here
 :root {
-	--color-dark-primary: #5D4131;
-	--color-dark-secondary: #57483F;
-	--color-light-primary: #F5F0EB;
-	--color-light-secondary: #FFFFFF;
-	--color-accent-1: #CAD279;
-	--color-accent-2: #E4C581;
-	--color-accent-3: #EFD0F3;
+	--color-dark-primary: #262B2F;
+	--color-dark-secondary: #262B2F;
+	--color-light-primary: #9CC4EA;
+	--color-light-secondary: #9CC4EA;
+	--color-accent-1: #346A9C;
+	--color-accent-2: #346A9C;
+	--color-accent-3: #346A9C;
 
 	--color-background: var(--color-light-primary);
 	--color-foreground: var(--color-dark-primary);
+	--color-link: #0E41A5;
 }
 
 // Text ------------------------------------------------------------------------
+// Set base text size and line-height here
+// See typography.scss for font and heading sizes
 :root {
 	--text-size: 16px;
 	--text-lineheight : 140%;
@@ -20,6 +24,8 @@
 }
 
 // Media -----------------------------------------------------------------------
+// Media queries are how the website is responsive to different screen widths.
+// Customize the variables for the breakpoints if needed
 :root {
 	--media-mini   : 360px;   // m
 	--media-phone  : 480px;   // sm

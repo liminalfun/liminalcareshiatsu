@@ -14,30 +14,6 @@ const { Content } = await home.render();
 <Layout title={home.data.title} description={home.data.description}>
 	<main class="site">
 		<h1 class="hidden">Queer astrologer in Montreal</h1>
-		<div class="section intro">
-			<p class="h3">{home.data.intro}</p>
-			<p class="h3">{home.data.intro2}</p>
-		</div>
-
-		<div class="section">
-			<div class="section-heading">
-				<h2>Writing</h2>
-				<a class="small" href="/writing">See all</a>
-			</div>
-			
-			<div class="blog-grid">
-				{posts.map(post => (
-					<a href={`/${post.slug}`} class="card-link">
-						<BlogCard
-							title={post.data.title}
-							description={post.data.description}
-							image={post.data.image}
-						/>
-					</a>
-				))}
-			</div>
-		</div>
-
 
 		<div class="content">
 			<Content />

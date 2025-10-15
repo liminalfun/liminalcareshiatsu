@@ -30,7 +30,7 @@ body{
 	align-items: center;
 	gap: 1rem;
 	margin: 0;
-	font-family: 'Bluu Next', sans-serif;
+	@include text-logo;
 	font-size: 1.4rem;
 	color: var(--text-primary);
 	text-decoration: none;

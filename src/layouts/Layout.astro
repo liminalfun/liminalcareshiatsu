@@ -1,10 +1,20 @@
 ---
+// Components
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+// Import
 import { SEO } from "astro-seo";
-import '@fontsource/bluu-next';
+
+// Import fonts. See guide: https://docs.astro.build/en/guides/fonts/
+import '@fontsource/biz-udmincho';
+import '@fontsource-variable/albert-sans/wght-italic.css';
+
+
 import '../styles/style.scss';
+
 import { getEntry } from 'astro:content';
+
 const settings = await getEntry('page', 'settings');
 
 interface Props {
