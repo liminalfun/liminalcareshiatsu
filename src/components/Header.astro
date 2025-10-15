@@ -1,0 +1,56 @@
+---
+import Navigation from './Navigation.astro';
+const { settings } = Astro.props;
+---
+<header>
+	<div class="nav-logo">
+		<img src={settings.site_logo.src} alt={settings.site_logo.alt} width="80px" height="80px">
+		<a href="/" class="logo">
+			{settings.site_name}
+		</a>
+	</div>
+	<nav class="nav-links">
+		<Navigation />
+  	</nav>
+</header>
+
+<style>
+	header {
+		padding: 1rem 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+	.nav-logo{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.nav-logo img{
+		width: 5rem;
+		height: auto;
+		margin-bottom: .3rem;
+	}
+	.nav-links {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: .75em;
+		> a {
+			color: var(--color-foreground);
+			text-decoration: none;
+			padding: 0.3rem .6rem;
+			border: 1px dotted var(--color-foreground);
+			transition: background-color 0.05s;
+			&:hover{
+				border: 1px solid var(--color-foreground);
+			}
+			&.active{
+				background-color: #F8E8AD;
+			}
+		}
+</style>

@@ -1,0 +1,56 @@
+---
+interface Props {
+	title: string;
+	href: string;
+	icon: string;
+	className: string;
+	newTab: string;
+}
+
+
+const { href, title, className, icon, newTab } = Astro.props;
+
+const calendar = '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M15 2h2v2h4v18H3V4h4V2h2v2h6V2zM5 8h14V6H5v2zm0 2v10h14V10H5z" fill="currentColor"/> </svg>'
+
+---
+<a class={`button ${className}`} href={href} target={newTab} >
+	{
+		icon ? (	
+				<div class="icon" set:html={icon} />
+			) : (
+			<>
+			</>
+		)
+	}
+
+	{title}
+</a>
+
+<style>
+	.button{
+		display: flex;
+		align-items: center;
+		max-width: 500px;
+		padding: .6rem 1rem;
+		margin-top: 1rem;
+		border: 1px dotted var(--color-foreground);
+		transition: background-color 0.05s;
+		text-decoration: none;
+
+		&:hover{
+			border: 1px solid var(--color-foreground);
+		}
+
+		&.newsletter{
+			background: var(--color-accent-1);
+		}
+		&.booking{
+			background: var(--color-accent-3);
+		}
+	}
+	.icon {
+		width: 1em;
+		height: 1em;
+		margin-right: .3em;
+	}
+</style>

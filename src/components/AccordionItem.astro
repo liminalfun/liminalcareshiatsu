@@ -1,0 +1,252 @@
+---
+/**
+ * * Accordion Item Component
+ *
+ * @description An individual accordion item that can be expanded/collapsed with smooth animations
+ */
+ interface Props {
+  /**
+   * Additional classes to apply to the item
+   */
+  class?: string
+  /**
+   * Title text displayed in the accordion header
+   */
+  title: string
+  /**
+   * Optional name attribute for the details element
+   */
+  name?: string
+  /**
+   * Optional image attribute for the details element
+   */
+   image?: string
+  /**
+   * HTML tag to use for the title (h2-h6)
+   * @default 'h3'
+   */
+  tagName?: string
+  /**
+   * Visual style variant of the accordion
+   * @default 'default'
+   */
+  variant?: 'default' | 'image'
+  /**
+   * Whether the accordion item is initially open
+   * @default false
+   */
+  open?: boolean
+  /**
+   * HTML attributes to spread on the accordion item
+   */
+  [key: string]: string | number | boolean | undefined
+}
+
+const {
+  class: className,
+  title,
+  subtitle,
+  image,
+  name,
+  tagName = 'h3',
+  variant = 'default',
+  open = false,
+  ...rest
+} = Astro.props
+
+const Tag = tagName
+---
+
+<li class:list={['item', className]} {...rest}>
+  <details class="wrapper" name={name} data-variant={variant} {...open ? { open } : {}}>
+    <summary class="title">
+      <Tag>
+        {
+          variant === 'image' ? (
+            <>
+				      <img src={image} alt="" class="acc-image">
+                <div class="title-inner">
+                  {title}
+                  <small>
+                    {subtitle}
+                  </small>
+                </div>
+				
+				      <span class="icon-plus">
+					      <svg 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 304 384"
+                  xmlns="http://www.w3.org/2000/svg" 
+                >
+						      <path fill="currentColor" d="M299 213H171v128h-43V213H0v-42h128V43h43v128h128v42z"/>
+					      </svg>
+					      <svg 
+                    aria-hidden="true"
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 304 384"
+                    xmlns="http://www.w3.org/2000/svg" 
+                  >
+                    <path fill="currentColor" d="M299 213H0v-42h299v42z"/>
+                  </svg>
+              </span>
+            </>
+          ) : (
+            <>
+				      <div class="title-inner">
+                {title}
+                <small>
+                  {subtitle}
+                </small>
+              </div>
+
+              <span class="icon-plus">
+					      <svg 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 304 384"
+                  xmlns="http://www.w3.org/2000/svg" 
+                >
+						      <path fill="currentColor" d="M299 213H171v128h-43V213H0v-42h128V43h43v128h128v42z"/>
+					      </svg>
+					      <svg 
+                    aria-hidden="true"
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 304 384"
+                    xmlns="http://www.w3.org/2000/svg" 
+                  >
+                    <path fill="currentColor" d="M299 213H0v-42h299v42z"/>
+                  </svg>
+              </span>
+              
+            </>
+          )
+        }
+      </Tag>
+    </summary>
+    <div class="content">
+      <slot />
+    </div>
+  </details>
+</li>
+
+<style>
+  :where(.wrapper) {
+    --transition-duration: 0.3s;
+    --transition-easing: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    border-block-start: var(--border-dotted);
+    padding-block: 0;
+  }
+
+  .title h2,
+  .title h3,
+  .title h4,
+  .title h5,
+  .title h6 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-inline-size: 100%;
+    font-weight: normal;
+  }
+
+  .wrapper {
+    @media (prefers-reduced-motion: no-preference) {
+      interpolate-size: allow-keywords;
+    }
+  }
+
+  .wrapper::details-content {
+    opacity: 0;
+    transition: content-visibility var(--transition-duration) allow-discrete,
+      opacity var(--transition-duration) var(--transition-easing),
+      block-size var(--transition-duration) var(--transition-easing);
+    block-size: 0;
+    overflow-y: clip;
+  }
+
+  .wrapper[open]::details-content {
+    opacity: 1;
+    block-size: auto;
+  }
+
+  :where(.wrapper) .content {
+    padding: 0 0 2rem;
+  }
+
+  .acc-image{
+	width: 3.75rem;
+	height: auto;
+  vertical-align: middle;
+  border-radius: 8px;
+  }
+
+  .title {
+    display: flex;
+    cursor: pointer;
+    padding-block: 0, 0.8rem;
+    list-style: none;
+  }
+
+  .title::marker,
+  .title::-webkit-details-marker {
+    display: none;
+    content: '';
+  }
+
+  .title:hover,
+  .title:focus-visible {
+    color: var(--color-dark-secondary);
+    text-decoration: none;
+    text-underline-offset: 4px;
+  }
+
+  .title-inner{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+  }
+
+  small{
+	font-size: 1rem;
+  }
+
+  :where(.icon-plus) {
+    display: inline-block;
+    position: relative;
+    aspect-ratio: 1;
+    block-size: 20px;
+  }
+
+  :where(.icon-plus svg) {
+    position: absolute;
+  }
+
+  :where(.icon-plus svg:first-of-type) {
+    transform: translateY(-50%);
+    inset-block-start: 50%;
+    inset-inline-start: 0;
+  }
+
+  :where(.icon-plus svg:last-of-type) {
+    transform: translateY(-50%);
+    inset-block-start: 50%;
+    inset-inline-start: 0;
+  }
+
+  :where(.content a) {
+    display: inline-block;
+  }
+
+  :where(.content > *:not(:first-child)) {
+    margin-block-start: 0.75rem;
+  }
+
+  :where(.wrapper[open]) .icon-plus svg:first-of-type {
+    opacity: 0;
+    inset-block-start: 0;
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const dateOptions: object = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+  timeZone: 'UTC'
+};
+
+const formattedPubDate = new Date(post.data.pubDate).toLocaleDateString("en-CA", dateOptions);
+---
+
+<Layout title={post.data.title}>
+  <div class="progress-container">
+    <div class="progress-bar" id="scrollProgress"></div>
+  </div>
+
+  <article class="site post">
+    <h1>{post.data.title}</h1>
+
+    <div class="cover">
+      <div class="info">
+        <small class="date">{formattedPubDate}</small>
+        <div class="copy" title={Astro.url.href}>
+          <img src="/images/icons/link.svg" alt="Link icon">
+          <small class="link">Copy link</small>
+        </div>
+      </div>
+      <div class="image-container hero">
+        <img src={post.data.image} alt={post.data.title} />
+      </div>
+    </div>
+
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style lang="scss">
+  .progress-container{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 8px;
+
+    .progress-bar{
+      height: 8px;
+      background: var(--color-accent-1);
+      width: 0%;
+    }
+  }
+  .cover{
+    .info{
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem 0 .5em;
+    }
+  }
+
+  .copy{
+    display: flex;
+    align-items: center;
+
+    .link{
+      text-decoration: underline;
+      margin-left: .15em;
+    }
+
+    &:hover{
+      cursor: pointer;
+      .link{
+        text-decoration: none;       
+      }
+    }
+  }
+</style>
+
+<script>
+  
+  const copyTriggers = document.querySelectorAll('.copy');
+
+  copyTriggers.forEach((copyTrigger) => {
+    copyTrigger.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href);
+    });
+  });
+
+  window.onscroll = () => {
+    let windowScroll = document.documentElement.scrollTop;
+    let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrollAmount = (windowScroll / windowHeight) * 100;
+    document.getElementById("scrollProgress").style.width = scrollAmount + "%";
+  };
+
+</script>

@@ -1,0 +1,34 @@
+---
+// Writing page layout ---- adapted from home page
+// WIP ABSOLUTELY NOT FINISHED AT ALL
+
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import Button from '../components/Button.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const home = await getEntry('page', 'writing');
+const posts = await getCollection('writing');
+const { Content } = await home.render();
+---
+
+<Layout title={home.data.title} description={home.data.description}>
+	<main class="site">
+		<h1>Writing</h1>
+		<div class="blog-grid">
+			{posts.map(post => (
+				<a href={`/${post.slug}`} class="card-link">
+					<BlogCard
+						title={post.data.title}
+						description={post.data.description}
+						image={post.data.image}
+					/>
+				</a>
+			))}
+		</div>
+	</main>
+</Layout>
+
+<style>
+
+</style>

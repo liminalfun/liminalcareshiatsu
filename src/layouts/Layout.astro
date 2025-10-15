@@ -1,0 +1,69 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SEO } from "astro-seo";
+import '@fontsource/bluu-next';
+import '../styles/style.scss';
+import { getEntry } from 'astro:content';
+const settings = await getEntry('page', 'settings');
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+
+const { title, description } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="sitemap" href="/sitemap-index.xml"/>
+		<meta name="generator" content={Astro.generator} />
+		<SEO
+		title={title || settings.data.site_title}
+		description={settings.data.share_description || description}
+		openGraph={{
+			basic: {
+			title: `${title}`,
+			type: "website",
+			image: `${settings.data.share_image}`,
+			url: "https://snorri.rest"
+			},
+			optional: {
+				description: `${settings.data.share_description}`,
+				locale: "en",
+			}
+		}}
+		extend={{
+			link: [{ rel: "icon", href: "/favicon.ico" }],
+			meta: [
+			{
+				name: "twitter:image",
+				content: `${settings.data.share_image}`,
+			}
+			],
+		}}
+		/>
+	</head>
+	<body>
+		<Header settings={settings.data}/>
+		<slot />
+		<Footer settings={settings.data} />
+	</body>
+</html>
+<style>
+
+	footer {
+		margin-top: auto;
+		padding: 2rem;
+		text-align: center;
+		border-top: 1px solid var(--accent);
+		color: var(--text-secondary);
+	}
+</style>

@@ -1,0 +1,29 @@
+// Colors ----------------------------------------------------------------------
+:root {
+	--color-dark-primary: #5D4131;
+	--color-dark-secondary: #57483F;
+	--color-light-primary: #F5F0EB;
+	--color-light-secondary: #FFFFFF;
+	--color-accent-1: #CAD279;
+	--color-accent-2: #E4C581;
+	--color-accent-3: #EFD0F3;
+
+	--color-background: var(--color-light-primary);
+	--color-foreground: var(--color-dark-primary);
+}
+
+// Text ------------------------------------------------------------------------
+:root {
+	--text-size: 16px;
+	--text-lineheight : 140%;
+	--border-dotted: 1px dotted var(--color-foreground);
+}
+
+// Media -----------------------------------------------------------------------
+:root {
+	--media-mini   : 360px;   // m
+	--media-phone  : 480px;   // sm
+	--media-tablet : 640px;   // md 
+	--media-laptop : 1024px;  // xl 
+	--media-desktop: 1440px;  // xl
+}

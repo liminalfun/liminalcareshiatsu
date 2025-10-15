@@ -1,0 +1,85 @@
+---
+import Button from './Button.astro';
+
+const year = new Date().getFullYear();
+const { settings } = Astro.props;
+---
+<footer>
+	<a href="/" class="logo">
+		{settings.site_name}
+	</a>
+	<div class="buttons">
+		<Button title={settings.link_booking.title} href={settings.link_booking.url} className="booking" icon={settings.link_booking.icon} newTab="_blank"/>
+		<Button title={settings.link_newsletter.title} href={settings.link_newsletter.url} className="newsletter" icon={settings.link_newsletter.icon} newTab="_blank"/>
+	</div>
+
+	<small>Email me — {settings.email}</small>
+
+	<div class="bottom">
+		<small class="credits">
+			Logo by <a href="https://www.instagram.com/casi.ta/" target="_blank">Casi Tanko</a><br>
+			Website template by <a href="https:/alexnawotka.com" target="_blank">Alex Nawotka</a>
+		</small>
+		<small class="copyright">&copy; {year}, {settings.site_name}. </small>
+
+	</div>
+	
+</footer>
+
+<style>
+	footer {
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+		max-width: 1400px;
+		margin: 4rem 0 0;
+	}
+	.buttons{
+		margin-bottom: 1rem;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		@media screen and (max-width: 640px){
+			display: block;
+		}
+	}
+	.bottom{
+		margin-top: 1rem;
+		@media screen and (min-width: 400px){
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			align-items: end;
+			
+			.credits{
+				text-align: right;
+			}
+		}
+		
+		small{ 
+			display: block;
+			line-height: 120%; 
+		}	
+	}
+
+
+
+
+	.nav-logo{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.nav-logo img{
+		width: 3.4rem;
+		height: auto;
+		margin-bottom: .16rem;
+	}
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+</style>
