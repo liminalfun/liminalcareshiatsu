@@ -7,14 +7,70 @@ import Button from '../components/Button.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 const home = await getEntry('page', 'home');
+const settings = await getEntry('page', 'settings');
 const posts = await getCollection('writing');
 const { Content } = await home.render();
 ---
 
 <Layout title={home.data.title} description={home.data.description}>
 	<main class="site">
-		<h1 class="hidden">Queer astrologer in Montreal</h1>
+		<div class="hero">
+			<h1>Shiatsu massage therapy in Montreal / Tioh'tia:ke / Mooniyang</h1>
+			<p>Alex Nawotka (they/them), massage therapy student at École Setsuko graduating in Jan ‘26</p>
+		</div>
+		
+		<div class="booking">
+			<h2>Book with me</h2>
+			<div class="card">
+				<h3>Supervised student clinic</h3>
+				<p>60-minute massage, $25 <br/>
+					Thursdays 10am-4pm <br/>
+					École Setsuko in NDG
+				</p>
+				<a class="button" href="https://clinicecolesetsuko.janeapp.com" target="_blank">Book via Ecole Setsuko</a>
+			</div>
+			<div class="card">
+				<h3>Practice massage</h3>
+				<p>60-minute massage, free/by donation <br/>
+					At my home studio in the Plateau
+				</p>
+				<a class="button outline" href="https://cal.com/liminalcareshiatsu" target="_blank">Book with me directly</a>
+			</div>
+		</div>
+		
+		<h2>What is shiatsu?</h2>
+		<p>Shiatsu is a Japanese therapeutic massage technique using deep, targeted pressure on specific points to promote balance, circulation, and restore health. It is received fully clothed on a futon on the floor.</p>
+		<p>Shiatsu can benefit a variety of physical, emotional, and psychological conditions including:
+			<ul>
+				<li>
+					stress, muscle tension, neck and shoulder tension, migraines, back pain, sciatic nerve, carpal tunnel
+				</li>
+				<li>
+					anxiety, insomnia, nervous system disregulation
+				</li>
+				<li>
+					digestive problems, diarrhea, constipation
+				</li>
+				<li>
+					breathing problems, sinusitis, cold hands and feet
+				</li>
+			</ul>
+		</p>
+		<figure>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2sHZM9L40pY?si=y1t57-19i-l-P8Ba" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			<figcaption>
+				What is Shiatsu Massage? | Massage Therapy School Training at École Setsuko
+			</figcaption>
+		</figure>
 
+		<p>My training is in the Zen Shiatsu lineage, developed by Shizuto Masunaga in the 1960-70s. This approach integrates healing concepts from Traditional Chinese Medicine (TCM) alongside Western approaches to physiology, pathology, and holistic wellbeing.</p>
+
+		<p>Feel free to ask me questions about Shiatsu, even very basic ones! I’d love to share what I know, and I’m very curious what kind of info & how much detail folks would like to know before booking their first shiatsu massage.</p>
+
+		<h2>About me</h2>
+		<p>I’m Alex Nawotka (they/them), a queer massage therapist in training. I'm based on unceded Kanien’kehá:ka land, in Tioh’tià:ke / Mooniyang / Montréal, QC. I began the Shiatsu diploma program at École Setsuko in Jan 2024 and will be a certified massage therapist in Jan 2026. </p>
+		<p>You can contact me at alexnawotka@pm.me.</p>
+		
 		<div class="content">
 			<Content />
 		</div>
@@ -22,8 +78,28 @@ const { Content } = await home.render();
 </Layout>
 
 <style lang="scss">
-	.content{
-		padding-top: .5rem;
+
+	@use "../styles/base/vars" as *;
+
+	.hero {
+		margin-bottom: 2.5rem;
+	}
+
+	.card {
+		background-color: var(--color-light-secondary);
+		padding: .8rem .5rem;
+		border-radius: var(--border-radius);
+		margin-bottom: 1.5rem;
+	}
+
+	.booking {
+		margin-bottom: 3rem;
+	}
+	
+	figure {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 </style>

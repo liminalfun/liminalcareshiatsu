@@ -1,28 +1,50 @@
 ---
 import Navigation from './Navigation.astro';
+import { Image } from 'astro:assets';
 const { settings } = Astro.props;
+
+import logo from '../images/yin-yang.svg';
+
 ---
 <header>
-	<div class="nav-logo">
-		<a href="/" class="logo">
-			{settings.site_name}
-		</a>
+	<div class="logo">
+		<Image src={logo} alt="Queer shiatsu massage therapy in Montreal, Liminal Care Shiatsu" />
+		<span>{settings.site_name}</span>
 	</div>
+
 	<nav class="nav-links">
 		<Navigation />
   	</nav>
 </header>
 
-<style lang="scss">
+<style lang="scss" is:global>
+	@use "../styles/base/typography" as *;
+
 	header {
 		padding: 1rem 1rem;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
-		max-width: 1400px;
+		max-width: 800px;
 		margin: 0 auto;
 	}
+
+	.logo {
+		@include font-serif;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		display: flex;
+		align-items: center;
+		margin: 0;
+		color: var(--text-primary);
+
+		img {
+			width: 1.25em;
+			height: auto;
+			margin-right: .5rem;
+		}
+	}
+
 	.nav-links {
 		display: flex;
 		flex-wrap: wrap;

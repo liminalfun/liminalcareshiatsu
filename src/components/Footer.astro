@@ -1,39 +1,38 @@
 ---
-import Button from './Button.astro';
+import { Image } from 'astro:assets';
+import logo from '../images/yin-yang.svg';
+
 
 const year = new Date().getFullYear();
 const { settings } = Astro.props;
 ---
 <footer>
-	<a href="/" class="logo">
-		{settings.site_name}
-	</a>
-	<div class="buttons">
-		<Button title={settings.link_booking.title} href={settings.link_booking.url} className="booking" icon={settings.link_booking.icon} newTab="_blank"/>
-		<Button title={settings.link_newsletter.title} href={settings.link_newsletter.url} className="newsletter" icon={settings.link_newsletter.icon} newTab="_blank"/>
+	<div class="logo">
+		<Image src={logo} alt="Queer shiatsu massage therapy in Montreal, Liminal Care Shiatsu" />
+		<span>{settings.site_name}</span>
 	</div>
 
-	<small>Email me — {settings.email}</small>
+	<p>
+		Booking: <a href="https://cal.com/liminalcareshiatsu" target="_blank">cal.com/liminalcareshiatsu</a><br/>
+		Email: {settings.email} <br/>
+		Instagram: <a href="https://instagram.com/liminalcareshiatsu" target="_blank">@liminalcare</a>
 
-	<div class="bottom">
-		<small class="credits">
-			Logo by <a href="https://www.instagram.com/casi.ta/" target="_blank">Casi Tanko</a><br>
-			Website template by <a href="https:/alexnawotka.com" target="_blank">Alex Nawotka</a>
-		</small>
-		<small class="copyright">&copy; {year}, {settings.site_name}. </small>
+	</p>
 
-	</div>
+	<small class="copyright">&copy; {year}, {settings.site_name}. </small>
+
 	
 </footer>
 
 <style>
+
 	footer {
-		padding: 1rem;
+		max-width: 800px;
+		padding: 1rem 1rem .5rem;
 		display: flex;
 		flex-direction: column;
 		gap: .5rem;
-		max-width: 1400px;
-		margin: 4rem 0 0;
+		margin: 4rem auto 0;
 	}
 	.buttons{
 		margin-bottom: 1rem;
