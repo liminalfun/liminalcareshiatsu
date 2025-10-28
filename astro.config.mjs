@@ -14,7 +14,7 @@ import favicons from 'astro-favicons';
 
 
 export default defineConfig({
-//  site: 'https://[NEW PROJECT]', // e.g. https://liminalcareshiatsu.com
+  site: 'https://liminalcare.ca',
 
   redirects: {
       // '/blog/[...slug]': '/writing/[...slug]'

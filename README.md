@@ -30,9 +30,9 @@ Now you're ready to get started editing the boilerplate to build your project!
 
 ## Customize the boilerplate for your project
 
-1. Update your project name:
-    - package.json (update name from 'astro-boilerplate')
-    - src/content/page/settings.mdx
+1. Update your project name in the following files:
+    - package.json 
+    - src/content/settings.mdx
     - 
 
 
@@ -42,7 +42,7 @@ Not yet edited
 ----
 
 ## To preview edits
-in  terminal from snorri folder, run the command `npm run dev`
+in  terminal from project folder, run the command `npm run dev`
 this starts the local development environment, using your computer as a local server. any saved changes will be immediately visible at `localhost:4321` from your computer while the local server is running.
 
 
@@ -51,7 +51,7 @@ this starts the local development environment, using your computer as a local se
 - Edit .md files in VS Code or Obsidian on your computer
 
 When you want to push something live to the internet:
-- Run `vercel --prod` in terminal at the level of the `/snorri` repo folder
+- Run `vercel --prod` in terminal at the level of the `/{project_name}` repo folder
 - Commit and push to github (back it up) in VS Code or by running `git commit -a -m "my commit message"`
 
 ## 🚀 Project Structure

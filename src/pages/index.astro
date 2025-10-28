@@ -2,13 +2,10 @@
 // Homepage layout
 
 import Layout from '../layouts/Layout.astro';
-import BlogCard from '../components/BlogCard.astro';
-import Button from '../components/Button.astro';
-import { getCollection, getEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 
 const home = await getEntry('page', 'home');
 const settings = await getEntry('page', 'settings');
-const posts = await getCollection('writing');
 const { Content } = await home.render();
 ---
 
