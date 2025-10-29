@@ -1,15 +1,21 @@
-# Astro boilerplate
+# Liminal Care Shiatsu
 
-Created by Alex Nawotka @liminalfun
+Design + code by Alex Nawotka
 
-## First time setup guide
+Tools used:
+- [Figma](https://www.figma.com/) (for design)
+- [Astro](https://astro.build/) (JavaScript web framework)
+- [Github pages](https://docs.astro.build/en/guides/deploy/github/) (for hosting)
+- [Namecheap](https://www.namecheap.com/) (for domain registration + email forwarding)
+- [Cloudflare](https://www.cloudflare.com/) (for setting up URL redirect from liminalcare.ca -> liminalcareshiatsu.com)
+
+## Setup guide
 
 1. Check that the following are installed on your computer:
     - Code editor (e.g. VS Code)
     - npm & Node.js (via command line -- see guide for [linux](https://linuxconfig.org/install-npm-on-linux))
     - git
     - github account (+ linked to your code editor and/or terminal)
-
 
 2. Setup project folder
     - Use github to clone this repo onto your local device. If you don't have a folder where you keep your websites yet, create one (for example: /sites) and then clone this repo into that folder.
@@ -19,13 +25,18 @@ Created by Alex Nawotka @liminalfun
     - Setup git for the new project (see [guide on datacamp](https://www.datacamp.com/tutorial/git-init) for reference)
     - Initialize and push to new repo on Github
 
-
 3. Install npm packages for local development
     - Use terminal at the root of your project to run: `npm install`
     - If needed, run `npm audit fix` as well
     - Try running your project with `npm run dev` and check for issues
 
-Now you're ready to get started editing the boilerplate to build your project!
+Now you're ready to get started editing!
+
+
+
+----
+Everything below has not been edited yet
+----
 
 
 ## Customize the boilerplate for your project
@@ -33,13 +44,9 @@ Now you're ready to get started editing the boilerplate to build your project!
 1. Update your project name in the following files:
     - package.json 
     - src/content/settings.mdx
-    - 
 
+2. To be continued
 
-
-----
-Not yet edited
-----
 
 ## To preview edits
 in  terminal from project folder, run the command `npm run dev`
