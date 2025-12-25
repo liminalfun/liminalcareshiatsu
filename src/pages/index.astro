@@ -111,6 +111,15 @@ const { Content } = await home.render();
         <div class="content">
             <Content />
         </div>
+
+        <iframe
+            src="https://liminalcareshiatsu.substack.com/embed"
+            width="480"
+            height="320"
+            style="border:1px solid #EEE; background:#BCD7F1;"
+            class="card"
+            frameborder="0"
+            scrolling="no"></iframe>
     </main>
 </Layout>
 
@@ -126,6 +135,19 @@ const { Content } = await home.render();
         padding: 0.8rem 0.5rem;
         border-radius: var(--border-radius);
         margin-bottom: 1.5rem;
+    }
+
+    iframe.card {
+        padding: 0;
+        margin-top: 1.5rem;
+        background: var(--color-light-secondary) !important;
+        html,
+        & > * {
+            background: var(--color-light-secondary) !important;
+            :root {
+                --color_bg_color: #bcd7f1;
+            }
+        }
     }
 
     .booking {
