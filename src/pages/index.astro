@@ -16,8 +16,9 @@ const { Content } = await home.render();
                 Shiatsu massage therapy in Montreal / Tioh'tia:ke / Mooniyang
             </h1>
             <p>
-                Alex Nawotka (they/them), massage therapy student at École
-                Setsuko graduating in Jan ‘26
+                Alex Nawotka (they/them), certified massage therapist and member
+                of the Réseau des massothérapeutes professionnels du Québec
+                (RMPQ)
             </p>
         </div>
 
@@ -26,8 +27,8 @@ const { Content } = await home.render();
             <div class="card">
                 <h3>Shiatsu massage in NDG</h3>
                 <p>
-                    60-minute massage, by donation <br />
-                    At Setsuko in NDG 2111 Ave Northcliffe, 11D basement
+                    60-minute massage, $90-120 (sliding scale)<br />
+                    At Setsuko in NDG, 2111 Ave Northcliffe, 11D basement
                 </p>
                 <a
                     class="button"
@@ -38,8 +39,9 @@ const { Content } = await home.render();
             <div class="card">
                 <h3>At-home / Mobile Shiatsu Massage</h3>
                 <p>
-                    60-minute massage, by donation + transport fees <br />
-                    At your location Greater Montreal Area
+                    60-minute massage, $90-120 (sliding scale) + transport fees <br
+                    />
+                    At your location, Greater Montreal Area
                 </p>
                 <a
                     class="button outline"
@@ -47,6 +49,7 @@ const { Content } = await home.render();
                     target="_blank">Book an at-home massage</a
                 >
             </div>
+            <p>Insurance receipts & reduced rates available upon request</p>
         </div>
 
         <h2>What is shiatsu?</h2>
@@ -103,8 +106,8 @@ const { Content } = await home.render();
         <p>
             I’m Alex Nawotka (they/them), a queer massage therapist in training.
             I'm based on unceded Kanien’kehá:ka land, in Tioh’tià:ke / Mooniyang
-            / Montréal, QC. I began the Shiatsu diploma program at École Setsuko
-            in Jan 2024 and will be a certified massage therapist in Jan 2026.
+            / Montréal, QC. I completed the Shiatsu diploma program at École
+            Setsuko from Jan 2024-2026.
         </p>
         <p>You can contact me at alex@liminalcareshiatsu.com.</p>
 
@@ -112,51 +115,99 @@ const { Content } = await home.render();
             <Content />
         </div>
 
-        <iframe
-            src="https://liminalcareshiatsu.substack.com/embed"
-            width="480"
-            height="320"
-            style="border:1px solid #EEE; background:#BCD7F1;"
-            class="card"
-            frameborder="0"
-            scrolling="no"></iframe>
+        <h2>Community resources</h2>
+        <p>
+            Here are a few local initiatives I'm aware of that may be helpful
+            for finding complementary care ✧.*
+            <ul>
+                <li>
+                    <a
+                        href="https://affordabletherapynetwork.com/"
+                        target="_blank"
+                    >
+                        Affordable Therapy Network
+                    </a>, a directory of therapists offering low cost & sliding
+                    scale counselling across Canada
+                </li>
+                <li>
+                    <a
+                        href="https://www.communityhealingdays.ca/"
+                        target="_blank">Community Healing Days</a
+                    >, low cost sliding scale healing project offering
+                    traditional therapies to low income and marginalized folks
+                    in Tiohtià:ke (Montreal) who are underserved by the public
+                    healthcare system
+                </li>
+                <li>
+                    <a
+                        href="https://www.blackhealingcentre.com/"
+                        target="_blank">Black Healing Centre</a
+                    >, free and subsidized therapeutic services and programming
+                    that aims to empower people of African and Caribbean descent
+                    in Tiohtià:ke (Montreal)
+                </li>
+                <li>
+                    <a href="https://transpatientunion.org/en/" target="_blank"
+                        >Trans Patient Union</a
+                    >, coalition by and for trans & nonbinary patients receiving
+                    or trying to receive care in Tiohtià:ke (Montreal)
+                </li>
+                <li>
+                    <a href="https://montrealdaoist.com/" target="_blank"
+                        >Daoist Arts Community Centre</a
+                    >, a place for the study and practice of Daoist Arts:
+                    Acupuncture, Chinese Medicine, Qi Gong,Tai Ji Quan and
+                    Somatic healing arts
+                </li>
+            </ul>
+
+            <h2>Sign up for my newsletter</h2>
+            <iframe
+                src="https://liminalcareshiatsu.substack.com/embed"
+                width="480"
+                height="320"
+                style="border:1px solid #EEE; background:#BCD7F1;"
+                class="card"
+                frameborder="0"
+                scrolling="no"></iframe>
+        </p>
     </main>
-</Layout>
 
-<style lang="scss">
-    @use "../styles/base/vars" as *;
+    <style lang="scss">
+        @use "../styles/base/vars" as *;
 
-    .hero {
-        margin-bottom: 2.5rem;
-    }
+        .hero {
+            margin-bottom: 2.5rem;
+        }
 
-    .card {
-        background-color: var(--color-light-secondary);
-        padding: 0.8rem 0.5rem;
-        border-radius: var(--border-radius);
-        margin-bottom: 1.5rem;
-    }
+        .card {
+            background-color: var(--color-light-secondary);
+            padding: 0.8rem 0.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+        }
 
-    iframe.card {
-        padding: 0;
-        margin-top: 1.5rem;
-        background: var(--color-light-secondary) !important;
-        html,
-        & > * {
+        iframe.card {
+            padding: 0;
+            margin-top: 1.5rem;
             background: var(--color-light-secondary) !important;
-            :root {
-                --color_bg_color: #bcd7f1;
+            html,
+            & > * {
+                background: var(--color-light-secondary) !important;
+                :root {
+                    --color_bg_color: #bcd7f1;
+                }
             }
         }
-    }
 
-    .booking {
-        margin-bottom: 3rem;
-    }
+        .booking {
+            margin-bottom: 3rem;
+        }
 
-    figure {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-</style>
+        figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</Layout>
